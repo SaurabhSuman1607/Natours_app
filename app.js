@@ -9,6 +9,7 @@ const xss=require('xss-clean');
 const cookieParser=require('cookie-parser');
 const hpp = require('hpp');
 const globalErrorHandler = require('./controller/errController.js');
+const compression=require('compression');
 const tourRouter = require('./Routes/tourRoutes');
 const userRouter = require('./Routes/userRoutes');
 const appError = require('./utils/AppError.js');
@@ -83,6 +84,7 @@ app.use(hpp({
   ]
 }));
 
+app.use(compression());
 //Test middleWare
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
